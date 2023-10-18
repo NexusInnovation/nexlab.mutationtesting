@@ -11,7 +11,7 @@ Pour mesurer la qualité, les tests automatisés permettent d'obtenir le % de te
 
 La réponsne est non. L'une des raisons est que **100% des tests réussis et 100% de couverture du code par les tests ne veut pas dire que le code est testés et vérifiés entièrement**. On parle ici de l'efficacité des tests à trouver une anomalie.
 
-C'est ainsi que les tests par mutation permettent d'obtenir une métrique additionel afin d'ajouter de la stabilité en simulant des anomalies dans le code testé (des mutants) et relancé les tests pour vérifier que chaque anomalie a fait échoué un ou plusieurs tests (nombre de mutants tués).
+C'est ainsi que les tests par mutation permettent d'obtenir une métrique additionel afin d'ajouter de la stabilité en simulant des anomalies dans le code testé (des mutants) et relancer les tests pour vérifier que chaque anomalie a fait échoué un ou plusieurs tests (nombre de mutants tués).
 
 ## Comment l'appliquer ?
 
@@ -39,7 +39,7 @@ Les étapes en vert sont ajoutés aux processus d'intégration en continue de so
 
 ## Références
 
-[Awesome Mutation testing](https://github.com/theofidry/awesome-mutation-testing): Répertoire GitHub très riches en informations
+[Awesome Mutation testing](https://github.com/theofidry/awesome-mutation-testing): Répertoire GitHub très riches en information
 
 [Don't chase test coverage](https://www.youtube.com/watch?v=BVErL_Ez9LI): Capsule de Dave Farley (Continuous Delivery) qui expose les faiblesses de la métrique de couverture du code par les tests - Août 2023
 
