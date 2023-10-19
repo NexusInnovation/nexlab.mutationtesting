@@ -7,11 +7,11 @@ Exploration des tests par mutation
 ### Qu'est-ce que les tests par mutation ?
 En développement logiciel, la gestion de la qualité se concentre souvent à coder des tests automatisés dont le rôle est de s'assurer du bon fonctionnement d'un comportement dans un processus d'intégration en continue.
 
-Pour mesurer la qualité, les tests automatisés permettent d'obtenir le % de tests réussis et aussi la couverture du code testé par les tests automatisés. Est-ce suffisant pour dire que l'application fonctionne vraiement ?
+Pour mesurer la qualité, les tests automatisés permettent d'obtenir le % de tests réussis et aussi la couverture du code testé par les tests automatisés. Est-ce suffisant pour dire que l'application fonctionne vraiment ?
 
-La réponsne est non. L'une des raisons est que **100% des tests réussis et 100% de couverture du code par les tests ne veut pas dire que le code est testés et vérifiés entièrement**. On parle ici de l'efficacité des tests à trouver une anomalie.
+La réponse est non. L'une des raisons est que **100% des tests réussis et 100% de couverture du code par les tests ne veut pas dire que le code est testés et vérifiés entièrement**. On parle ici de l'efficacité des tests à trouver une anomalie.
 
-C'est ainsi que les tests par mutation permettent d'obtenir une métrique additionel afin d'ajouter de la stabilité en simulant des anomalies dans le code testé (des mutants) et relancer les tests pour vérifier que chaque anomalie a fait échoué un ou plusieurs tests (nombre de mutants tués).
+C'est ainsi que les tests par mutation permettent d'obtenir une métrique additionnelle afin d'ajouter de la stabilité en simulant des anomalies dans le code testé (des mutants) et relancer les tests pour vérifier que chaque anomalie a fait échoué un ou plusieurs tests (nombre de mutants tués).
 
 ## Comment l'appliquer ?
 
@@ -47,9 +47,9 @@ Les étapes en vert sont ajoutés aux processus d'intégration en continue de so
 
 [An introduction to mutation testing](https://www.cs.cornell.edu/~dgeisler/mutation/testing/2021/11/01/mutation-testing1.html): Article en 3 parties qui expose la base mais aussi la tendance en pratique, des problèmes rencontrés et plus... par Dietrich Geisler - 8 Novembre 2021
 
-[Increase the quality of unit tests using mutation with PITest](https://dev.to/silviobuss/increase-the-quality-of-unit-tests-using-mutation-with-pitest-3b27/): Article qui expose un cas les biensfaits d'intégrer les tests de mutation en JAVA par Silvio Buss - 17 Juillet 2019
+[Increase the quality of unit tests using mutation with PITest](https://dev.to/silviobuss/increase-the-quality-of-unit-tests-using-mutation-with-pitest-3b27/): Article qui expose un cas les bienfaits d'intégrer les tests de mutation en JAVA par Silvio Buss - 17 Juillet 2019
 
-[An industrial application of mutation testing: lessons, challenges and research](https://homes.cs.washington.edu/~rjust/publ/industrial_mutation_icst_2018.pdf): Papier complet d'un étdude de cas sur l'application de la pratique chez Google entreautres... par
+[An industrial application of mutation testing: lessons, challenges and research](https://homes.cs.washington.edu/~rjust/publ/industrial_mutation_icst_2018.pdf): Papier complet d'un étude de cas en 2018 sur l'application de la pratique chez Google entre autres... par
 - Google Switzerland: Goran Petrovic, Marko Ivankovi
 - George Mason University USA: Bob Kurtz, Paul Ammann
 - University of Massachusetts USA: René Just
