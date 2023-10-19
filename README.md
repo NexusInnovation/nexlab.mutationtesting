@@ -25,8 +25,8 @@ graph LR
     C --> D[Tester]
     D --> E[Publier le rapport des tests]
 
-    style C fill:#117711,stroke:#333,stroke-width:2px,TextColor:red
-    style D fill:#117711,stroke:#333,stroke-width:2px,nodeTextColor:black
+    style C fill:#117711,stroke:#333,stroke-width:2px
+    style D fill:#117711,stroke:#333,stroke-width:2px
 ```
 Les étapes en vert sont ajoutés aux processus d'intégration en continue de sorte d'attraper des régressions tôt pendant le développement afin d'agir rapidement.
 
