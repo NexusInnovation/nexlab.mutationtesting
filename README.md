@@ -5,7 +5,7 @@ Exploration des tests par mutation
 *nexlab.mutationtesting* est un projet d'exploration initié par les développeurs(ses) chez [Nexus Innovations](https://nexusinno.com/) pour analyser la pratique, les outils afin de d'appliquer celle-ci dans un contexte favorable.
 
 ### Qu'est-ce que les tests par mutation ?
-En développement logiciel, la gestion de la qualité ce concentre souvent à coder des tests automatiés dont le rôle est de s'assurer du bon fonctionnement d'un comportement dans un processus d'intégration en continue.
+En développement logiciel, la gestion de la qualité se concentre souvent à coder des tests automatisés dont le rôle est de s'assurer du bon fonctionnement d'un comportement dans un processus d'intégration en continue.
 
 Pour mesurer la qualité, les tests automatisés permettent d'obtenir le % de tests réussis et aussi la couverture du code testé par les tests automatisés. Est-ce suffisant pour dire que l'application fonctionne vraiement ?
 
