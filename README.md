@@ -31,6 +31,10 @@ Les étapes en vert sont ajoutés aux processus d'intégration en continue de so
 
 ## En pratiques
 
+Le context du projet à développer doit être favorable. En d'autres mots, la qualité doit être un attribut important pour la réussite du projet et soutenu par les intervenants.
+
+La gestion de la qualité doit nécessairement passer par des tests automatisés afin d'appliquer des tests par mutation.
+
 ### Avantages
 
 1. Offre un aperçue sur l'efficacité des tests à attraper des comportements indésirables
@@ -47,7 +51,7 @@ Les étapes en vert sont ajoutés aux processus d'intégration en continue de so
 
 ### Défis et risques
 
-Adapter les tests par mutation ne doit pas être perçu comme une tâches en extra ou même exlus du développement d'une fonctionnalité. La culture de gestion de la qualité en pratique ne doit pas se restreindre à chasser des mutants et atteindre une couverture de test acceptable. Les tests par mutation est plus facilement intégrable pour des tests unitaires d'une librairie.
+Adapter les tests par mutation ne doit pas être perçu comme une tâches en extra ou même exlus du développement d'une fonctionnalité. La culture de gestion de la qualité en pratique ne doit pas se restreindre à chasser des mutants et atteindre une couverture de test acceptable.
 
 #### Attentes irréalistes
 
@@ -62,6 +66,12 @@ Ainsi, nous devons choisir le code qui est soumis aux tests par mutation.
 Maintenant que la chasse aux mutants est commencé, le premier problème est qu'il risque fort d'y avoir beaucoup plus de mutants que les développeurs peuvent gérer dans un effort acceptable. 
 
 Si on exige qu'aucun mutant doit survivre, les développeurs vont passer beaucoup de temps à les attraper et seront tentés de vouloir tricher la métrique pour respecter ce standard. Sinon, attraper tous les mutants va générer beaucoup de tests automatisés peu pertinents, abstraits dont la maintenance sera coûteuse et souffrante.
+
+#### Attraper les plus importants
+
+Dans le cas que l'on tolère un efficacité à attraper les mutants de 85%, un problème est que idéalement on veut attraper les mutants les plus importants et dommageable selon le contexte. 
+
+Techniquement la mise en place de filtres pour identifier ceux-ci peut s'avérer ardue et complexe. Il est inévitable que **le rapport des mutants survivants doit être surveillé** afin de s'adapter ou réagir. Car, évidement le nombre total de mutants survivant sera le même pour une modification au code qui laisse nouvellement passer un mutant très dommageable mais attrape un autre moins important.
 
 ## Références
 
