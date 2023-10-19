@@ -18,14 +18,15 @@ C'est ainsi que les tests par mutation permettent d'obtenir une métrique additi
 Il existe plusieurs outils selon la technologie utilisés, cependant l'intégration dans un processus d'intégration en continue se résume à ceci:
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph LR
     A[Construire] --> B[Tester]
     B --> C[Muter et construire]
     C --> D[Tester]
     D --> E[Publier le rapport des tests]
 
-    style C fill:#DDffDD,stroke:#333,stroke-width:2px,font-color:black
-    style D fill:#DDffDD,stroke:#333,stroke-width:2px,font-color:black
+    style C fill:#117711,stroke:#333,stroke-width:2px,TextColor:red
+    style D fill:#117711,stroke:#333,stroke-width:2px,nodeTextColor:black
 ```
 Les étapes en vert sont ajoutés aux processus d'intégration en continue de sorte d'attraper des régressions tôt pendant le développement afin d'agir rapidement.
 
