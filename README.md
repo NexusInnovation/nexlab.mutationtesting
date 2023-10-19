@@ -72,7 +72,7 @@ Si on exige qu'aucun mutant doit survivre, les développeurs vont passer beaucou
 
 Dans le cas que l'on tolère un efficacité à attraper les mutants de 85%, un problème est que idéalement on veut attraper les mutants les plus importants et dommageable selon le contexte. 
 
-Techniquement la mise en place de filtres pour identifier ceux-ci peut s'avérer ardue et complexe. Il est inévitable que **le rapport des mutants survivants doit être surveillé** afin de s'adapter ou réagir. Car, évidement le nombre total de mutants survivant sera le même pour une modification au code qui laisse nouvellement passer un mutant très dommageable mais attrape un autre moins important.
+Techniquement la mise en place de filtres pour identifier ceux-ci peut s'avérer ardue et complexe. Il est inévitable que **le rapport des mutants survivants doit être surveillé** afin de réagir. Car, évidement le nombre total de mutants survivant sera le même pour une modification au code qui laisse nouvellement passer un mutant très dommageable mais attrape un autre moins important.
 
 ## Références
 
