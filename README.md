@@ -18,24 +18,61 @@ C'est ainsi que les tests par mutation permettent d'obtenir une métrique additi
 Il existe plusieurs outils selon la technologie utilisés, cependant l'intégration dans un processus d'intégration en continue se résume à ceci:
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph LR
     A[Construire] --> B[Tester]
     B --> C[Muter et construire]
     C --> D[Tester]
     D --> E[Publier le rapport des tests]
 
-    style C fill:#66ff66,stroke:#333,stroke-width:2px
-    style D fill:#66ff66,stroke:#333,stroke-width:2px
+    style C fill:#117711,stroke:#333,stroke-width:2px
+    style D fill:#117711,stroke:#333,stroke-width:2px
 ```
 Les étapes en vert sont ajoutés aux processus d'intégration en continue de sorte d'attraper des régressions tôt pendant le développement afin d'agir rapidement.
 
 ## En pratiques
 
+Le context du projet à développer doit être favorable. En d'autres mots, la qualité doit être un attribut important pour la réussite du projet et soutenu par les intervenants.
+
+La gestion de la qualité doit nécessairement passer par des tests automatisés afin d'appliquer des tests par mutation.
+
 ### Avantages
+
+1. Offre un aperçu sur l'efficacité des tests à attraper des comportements indésirables
+1. Prévient des erreurs de régression lorsqu'on bonifie les tests afin d'attraper des mutants ayant survécus
+1. Réduit des allers-retours causés par des anomalies identifié lors de tests manuelles
+1. Augmente la qualité des tests pour gagner en confiance sur la stabilité
 
 ### Inconvénients
 
+1. Effort accrue pour le développement des tests automatisés
+1. Ajout d'une responsabilité à analyser le rapport de tests par mutation
+1. Coût d'exécution des tests par mutation ralentit l'intégration en continue
+1. L'efficacité des tests par mutation dépend des possibilités qu'offre l'outil de mutation et ne peut pas simuler tous les types de modification
+
 ### Défis et risques
+
+Adopter les tests par mutation ne doit pas être perçu comme une tâches en extra ou même exclus du développement d'une fonctionnalité. La culture de gestion de la qualité en pratique ne doit pas se restreindre à chasser des mutants et atteindre une couverture de test acceptable.
+
+#### Attentes irréalistes
+
+Viser une couverture de tests de 100% et 0 survivants parmi les mutants sur l'entièreté du code est plutôt une utopie. Techniquement l'entièrement du code possèdent différent niveau de testabilité et de pertinence à être testé. 
+
+Du code qu'on appel parfois de plomberie dont la pertinence d'effectuer des mutations serait remis en question. L'enregistrement de services pour l'injection des dépendances, la gestion de traitement asynchrone par exemple peut être du code mutable mais difficile à attraper ou possiblement non pertinent.
+
+Ainsi, nous devons choisir le code qui est soumis aux tests par mutation.
+
+#### La chasse aux mutants
+
+Maintenant que la chasse aux mutants est commencée, le premier problème est qu'il risque fort d'y avoir beaucoup plus de mutants que les développeurs peuvent gérer dans un effort acceptable. 
+
+Si on exige qu'aucun mutant doit survivre, les développeurs vont passer beaucoup de temps à les attraper et seront tentés de vouloir tricher la métrique pour respecter ce standard. Sinon, attraper tous les mutants va générer beaucoup de tests automatisés peu pertinents, abstraits dont la maintenance sera coûteuse et souffrante.
+
+#### Attraper les plus importants
+
+Dans le cas où l'on tolère une efficacité à attraper les mutants de 85%, un problème est qu'on veut idéalement attraper les mutants les plus importants et dommageable selon le contexte. 
+
+Techniquement la mise en place de filtres pour identifier ceux-ci peut s'avérer ardue et complexe. Il est inévitable que **le rapport des mutants survivants doit être surveillé** afin de réagir. Car, évidement le nombre total de mutants survivant sera le même pour une modification au code qui laisse nouvellement passer un mutant très dommageable mais attrape un autre moins important.
 
 ## Références
 
