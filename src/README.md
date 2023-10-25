@@ -29,7 +29,7 @@ Time Elapsed 00:00:53.1934961
 The final mutation score is 35.00 %
 ```
 
-Dans ce cas-ci, l'outil a généré 28 mutants dans le code qui est testé (le code non testé n'aura aucun mutant d'injecté). Seulement 35% des mutant qui ont été injectés ont été tué. On peut vouloir ignorer certains fichier dans ce cas, par exemple Program.cs
+Dans ce cas-ci, l'outil a généré 28 mutants dans le code qui est testé (le code non testé n'aura aucun mutant d'injecté). Seulement 35% des mutant qui ont été injectés ont été tué.
 
 # Configuration
 Un fichier de [configuration](https://stryker-mutator.io/docs/stryker-net/Configuration) est possible d'être créé: `stryker-config.json`
