@@ -86,6 +86,8 @@ Dans le cadre d'un projet en **cours de développement**, l'intégration de test
 
 Pour un nouveau projet ou pas, une approche d'amélioration en continue est recommandée pour faciliter l'intégration de la pratique. En d'autres mots, on doit accepter qu'il y a quelques étapes à franchir avant d'empêcher un déploiement parce qu'un certains nombre de mutants ont survécus. En ce sens, on débute par une première analyse du rapport de mutation afin de configurer l'outil et de définir des règles adéquatement.
 
+En ajout, pour un projet inspiré de l'architecture propre (exemple: [CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), il est recommandé de focuser d'abord sur les couches application et domaine pour bonifier le pointage de mutation. Car se sont les couches responsable de la logique d'affaire.
+
 Globalement, on doit éviter le piège de simplement imposer une nouvelle porte blindé et immuable lors du déploiement qui va forcer les développeurs à les transformer en chasseurs de mutants.  
 Les tests par mutation est un outil qui doit être au service du développement afin d'améliorer la stabilité du produit. Les membres de l'équipe doivent en comprendre le fondement et se servir de l'outil adéquatement et intelligemment.
 
