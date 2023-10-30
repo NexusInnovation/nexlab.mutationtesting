@@ -9,7 +9,7 @@ En développement logiciel, la gestion de la qualité se concentre souvent à co
 
 Pour mesurer la qualité, les tests automatisés permettent d'obtenir le % de tests réussis et aussi la couverture du code testé par les tests automatisés. Est-ce suffisant pour dire que l'application fonctionne vraiment ?
 
-La réponse est non. L'une des raisons est que **100% des tests réussis et 100% de couverture du code par les tests ne veut pas dire que le code est testés et vérifiés entièrement**. On parle ici de l'efficacité des tests à trouver une anomalie.
+La réponse est non. L'une des raisons est que **100% des tests réussis et 100% de couverture du code par les tests ne veut pas dire que le code est testés et vérifiés entièrement**. On parle ici de l'efficacité des tests à trouver des anomalies.
 
 C'est ainsi que les tests par mutation permettent d'obtenir une métrique additionnelle afin d'ajouter de la stabilité en simulant des anomalies dans le code testé (des mutants) et relancer les tests pour vérifier que chaque anomalie a fait échoué un ou plusieurs tests (nombre de mutants tués).
 
@@ -66,13 +66,30 @@ Ainsi, nous devons choisir le code qui est soumis aux tests par mutation.
 
 Maintenant que la chasse aux mutants est commencée, le premier problème est qu'il risque fort d'y avoir beaucoup plus de mutants que les développeurs peuvent gérer dans un effort acceptable. 
 
-Si on exige qu'aucun mutant doit survivre, les développeurs vont passer beaucoup de temps à les attraper et seront tentés de vouloir tricher la métrique pour respecter ce standard. Sinon, attraper tous les mutants va générer beaucoup de tests automatisés peu pertinents, abstraits dont la maintenance sera coûteuse et souffrante.
+Si on exige qu'aucun mutant doit survivre, les développeurs vont passer beaucoup de temps à les attraper et seront tentés de vouloir tricher la métrique pour respecter ce standard. Aussi, attraper tous les mutants va générer beaucoup de tests automatisés peu pertinents, abstraits dont la maintenance sera coûteuse et souffrante. 
+
+C'est pourquoi l'équipe de développement se doit d'évaluer les mutations selon leurs contexte.
 
 #### Attraper les plus importants
 
-Dans le cas où l'on tolère une efficacité à attraper les mutants de 85%, un problème est qu'on veut idéalement attraper les mutants les plus importants et dommageable selon le contexte. 
+Si par exemple un standard de qualité exige d'attraper 85% des mutants, un problème est qu'on veut idéalement attraper les mutants les plus importants et dommageable.
 
-Techniquement la mise en place de filtres pour identifier ceux-ci peut s'avérer ardue et complexe. Il est inévitable que **le rapport des mutants survivants doit être surveillé** afin de réagir. Car, évidement le nombre total de mutants survivant sera le même pour une modification au code qui laisse nouvellement passer un mutant très dommageable mais attrape un autre moins important.
+Techniquement la mise en place de filtres pour identifier ceux-ci est possible mais demande une période d'adaptation et de la maintenance. Il est inévitable que **le rapport des mutants survivants doit être surveillé** afin de réagir. Car, évidemment, le nombre total de mutants survivant sera le même pour une modification au code qui laisse nouvellement passer un mutant très dommageable, mais attrape un autre moins important.
+
+## Recommandations
+
+Avant d'intégrer les tests par mutation, on doit minimalement avoir des tests automatisés ayant une couverture du code considérable. De plus, c'est un outil qui s'apprête bien pour des tests unitaires ou fonctionnels sur une librairie. Par contre, c'est moins adapté pour des tests d'intégrations, de systèmes ou bout en bout.
+
+À l'aube d'un **nouveau projet**, si la gestion de la qualité inclut une surveillance de la couverture du code, il est recommandé d'accompagner celle-ci avec le pointage de mutation (mutation score) pour exposer un indice d'efficacité des tests.
+
+Dans le cadre d'un projet en **cours de développement**, l'intégration de tests par mutation est idéalement suggéré agilement (et non imposé) afin de bonifier la gestion de la qualité. Les implications doivent être exposés et compris par l'équipe de développement et aussi par les parties prenantes. On doit accepter que l'outil va exposer de la dette technique qui normalement est rapporté au propriétaire du produit pour lui permettre de la gérer.
+
+Pour un nouveau projet ou pas, une approche d'amélioration en continue est recommandée pour faciliter l'intégration de la pratique. En d'autres mots, on doit accepter qu'il y a quelques étapes à franchir avant d'empêcher un déploiement parce qu'un certains nombre de mutants ont survécus. En ce sens, on débute par une première analyse du rapport de mutation afin de configurer l'outil et de définir des règles adéquatement.
+
+En ajout, pour un projet inspiré de l'architecture propre (exemple: [CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), il est recommandé de focuser d'abord sur les couches application et domaine pour bonifier le pointage de mutation. Car se sont les couches responsable de la logique d'affaire.
+
+Globalement, on doit éviter le piège de simplement imposer une nouvelle porte blindé et immuable lors du déploiement qui va forcer les développeurs à les transformer en chasseurs de mutants.  
+Les tests par mutation est un outil qui doit être au service du développement afin d'améliorer la stabilité du produit. Les membres de l'équipe doivent en comprendre le fondement et se servir de l'outil adéquatement et intelligemment.
 
 ## Références
 
