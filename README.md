@@ -74,13 +74,13 @@ C'est pourquoi l'équipe de développement se doit d'évaluer les mutations selo
 
 Si par exemple un standard de qualité exige d'attraper 85% des mutants, un problème est qu'on veut idéalement attraper les mutants les plus importants et dommageable.
 
-Techniquement la mise en place de filtres pour identifier ceux-ci est possible mais demande une période d'adaptation et de la maintenance. Il est inévitable que **le rapport des mutants survivants doit être surveillé** afin de réagir. Car, évidement le nombre total de mutants survivant sera le même pour une modification au code qui laisse nouvellement passer un mutant très dommageable mais attrape un autre moins important.
+Techniquement la mise en place de filtres pour identifier ceux-ci est possible mais demande une période d'adaptation et de la maintenance. Il est inévitable que **le rapport des mutants survivants doit être surveillé** afin de réagir. Car, évidemment, le nombre total de mutants survivant sera le même pour une modification au code qui laisse nouvellement passer un mutant très dommageable, mais attrape un autre moins important.
 
 ## Recommandations
 
-Avant d'intégrer les tests par mutation, on doit minimalement avoir des tests automatisés ayant une couverture du code considérable. De plus, c'est un outil qui s'apprête bien pour des tests unitaires ou fonctionnelles sur une librairie. Par contre, c'est moins adapté pour des tests d'intégrations, de systèmes ou bout en bout.
+Avant d'intégrer les tests par mutation, on doit minimalement avoir des tests automatisés ayant une couverture du code considérable. De plus, c'est un outil qui s'apprête bien pour des tests unitaires ou fonctionnels sur une librairie. Par contre, c'est moins adapté pour des tests d'intégrations, de systèmes ou bout en bout.
 
-À l'aube d'un **nouveau projet**, si la gestion de la qualité inclus une surveillance de la couverture du code, il est recommandé d'accompagner celle-ci avec le pointage de mutation (mutation score) pour exposer un indice d'efficacité des tests.
+À l'aube d'un **nouveau projet**, si la gestion de la qualité inclut une surveillance de la couverture du code, il est recommandé d'accompagner celle-ci avec le pointage de mutation (mutation score) pour exposer un indice d'efficacité des tests.
 
 Dans le cadre d'un projet en **cours de développement**, l'intégration de tests par mutation est idéalement suggéré agilement (et non imposé) afin de bonifier la gestion de la qualité. Les implications doivent être exposés et compris par l'équipe de développement et aussi par les parties prenantes. On doit accepter que l'outil va exposer de la dette technique qui normalement est rapporté au propriétaire du produit pour lui permettre de la gérer.
 
