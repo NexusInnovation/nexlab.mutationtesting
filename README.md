@@ -15,7 +15,7 @@ C'est ainsi que les tests par mutation permettent d'obtenir une métrique additi
 
 ## Comment l'appliquer ?
 
-Il existe plusieurs outils selon la technologie utilisés, cependant l'intégration dans un processus d'intégration en continue se résume à ceci:
+Il existe plusieurs outils selon la technologie utilisés, cependant le processus se résume à ceci:
 
 ```mermaid
 %%{init: {'theme':'dark'}}%%
@@ -28,7 +28,7 @@ graph LR
     style C fill:#117711,stroke:#333,stroke-width:2px
     style D fill:#117711,stroke:#333,stroke-width:2px
 ```
-Les étapes en vert sont ajoutés aux processus d'intégration en continue de sorte d'attraper des régressions tôt pendant le développement afin d'agir rapidement.
+Notez bien que si des anomalies sont trouvés sans mutation, le processus s'arrête car les données du rapport de mutation seraient fausses.
 
 ## En pratiques
 
@@ -45,9 +45,9 @@ La gestion de la qualité doit nécessairement passer par des tests automatisés
 
 ### Inconvénients
 
+1. Coût d'exécution des tests par mutation ralentit l'intégration en continue
 1. Effort accrue pour le développement des tests automatisés
 1. Ajout d'une responsabilité à analyser le rapport de tests par mutation
-1. Coût d'exécution des tests par mutation ralentit l'intégration en continue
 1. L'efficacité des tests par mutation dépend des possibilités qu'offre l'outil de mutation et ne peut pas simuler tous les types de modification
 
 ### Défis et risques
@@ -76,20 +76,46 @@ Si par exemple un standard de qualité exige d'attraper 85% des mutants, un prob
 
 Techniquement la mise en place de filtres pour identifier ceux-ci est possible mais demande une période d'adaptation et de la maintenance. Il est inévitable que **le rapport des mutants survivants doit être surveillé** afin de réagir. Car, évidemment, le nombre total de mutants survivant sera le même pour une modification au code qui laisse nouvellement passer un mutant très dommageable, mais attrape un autre moins important.
 
+#### Intégration en continue difficile
+
+Idéalement les étapes en vert sont ajoutés dans le processus d'intégration en continue pour attraper des régressions tôt pendant le développement et agir rapidement. 
+
+Par contre, le temps d'exécution de ces étapes risque fort de causer un problème. Si c'est le cas, il est possible d'effectuer ceux-ci en parallèle:
+
+```mermaid
+%%{init: {'theme':'dark'}}%%
+graph LR
+    A[Construire] --> B[Tester]
+    B --> Z[Publier le rapport des tests]
+    B --> C[Muter et construire]
+    Z --> F[Paquetage]
+    F --> G[Déploiement en env. X]
+    C --> D[Tester]
+    D --> E[Publier le rapport des tests par mutation]
+    G --> H[Porte de qualité]
+    E --> H
+    H --> I[Déploiement en env. Y]
+
+    style C fill:#117711,stroke:#333,stroke-width:2px
+    style D fill:#117711,stroke:#333,stroke-width:2px
+    style E fill:#117711,stroke:#333,stroke-width:2px
+```
+
+Cependant en pratique, l'intégration peut devenir un défi selon le processus de développement et la stratégie de branches en place.
+
 ## Recommandations
 
-Avant d'intégrer les tests par mutation, on doit minimalement avoir des tests automatisés ayant une couverture du code considérable. De plus, c'est un outil qui s'apprête bien pour des tests unitaires ou fonctionnels sur une librairie. Par contre, c'est moins adapté pour des tests d'intégrations, de systèmes ou bout en bout.
+Avant d'intégrer les tests par mutation, on doit avoir minimalement un processus de qualité sensible au % de couverture des tests automatisés. 
 
-À l'aube d'un **nouveau projet**, si la gestion de la qualité inclut une surveillance de la couverture du code, il est recommandé d'accompagner celle-ci avec le pointage de mutation (mutation score) pour exposer un indice d'efficacité des tests.
+Aussi, c'est un outil qui ne s'apprête pas bien pour des tests d'intégrations, de systèmes ou bout en bout. On obtient de meilleurs résultats quand appliqué sur des tests unitaires ou fonctionnels sur une librairie.
 
-Dans le cadre d'un projet en **cours de développement**, l'intégration de tests par mutation est idéalement suggéré agilement (et non imposé) afin de bonifier la gestion de la qualité. Les implications doivent être exposés et compris par l'équipe de développement et aussi par les parties prenantes. On doit accepter que l'outil va exposer de la dette technique qui normalement est rapporté au propriétaire du produit pour lui permettre de la gérer.
+Ceci dit, il est recommandé de focuser les tests de mutation sur la logique d'affaire. Par exemple, pour un projet inspiré de l'architecture propre ([CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), les couches application et domaine seraient ciblées pour calculer le pointage de mutation.
 
-Pour un nouveau projet ou pas, une approche d'amélioration en continue est recommandée pour faciliter l'intégration de la pratique. En d'autres mots, on doit accepter qu'il y a quelques étapes à franchir avant d'empêcher un déploiement parce qu'un certains nombre de mutants ont survécus. En ce sens, on débute par une première analyse du rapport de mutation afin de configurer l'outil et de définir des règles adéquatement.
+Une approche d'amélioration en continue est recommandée pour faciliter l'intégration de la pratique. Pour ceux qui travail en sprint par exemple, quelques points d'amélioration pourraient servir à extraire un premier rapport de test de mutation et d'en faire l'analyse. De la dette technique pourrait être identifiée. On évalue le pour et le contre de l'outil selon le contexte, pour confirmer ou non son utilisation. Une stratégie d'intégration en continue serait l'objectif des prochaines étapes advenant l'adaptation de l'outil pour le projet.
 
-En ajout, pour un projet inspiré de l'architecture propre (exemple: [CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), il est recommandé de focuser d'abord sur les couches application et domaine pour bonifier le pointage de mutation. Car se sont les couches responsable de la logique d'affaire.
+Si l'intégration en continue s'appui sur une porte de qualité qui exige une couverture de tests de 85% par exemple, l'ajout d'une sensibilité au pointage de mutation serait cohérent pour bonifier la robustesse. Un seuil similaire à celui de la couverture serait acceptable.
 
-Globalement, on doit éviter le piège de simplement imposer une nouvelle porte blindé et immuable lors du déploiement qui va forcer les développeurs à les transformer en chasseurs de mutants.  
-Les tests par mutation est un outil qui doit être au service du développement afin d'améliorer la stabilité du produit. Les membres de l'équipe doivent en comprendre le fondement et se servir de l'outil adéquatement et intelligemment.
+Globalement, on doit éviter le piège de simplement transformer les développeurs en chasseurs de mutants pour atteindre un seuil de pointage de mutation imposé. L'outil doit être au service du développement afin d'améliorer la stabilité du produit. Les membres de l'équipe doivent en comprendre le fondement et s'en servir dans le bon contexte et adéquatement.
 
 ## Références
 
