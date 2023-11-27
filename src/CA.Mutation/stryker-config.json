@@ -1,0 +1,17 @@
+{
+    "stryker-config":
+    {
+		"solution": "CA.Mutation.sln",
+		"test-projects": ["tests/**/*.csproj"],
+		"mutation-level": "Complete",
+		"ignore-mutations":[
+			"string"
+		],
+		"ignore-methods": [
+		  "ConfigureAwait", 
+		  "*.ctor", 
+		  "Log",
+		  "LogInformation"
+		]
+    }
+}
