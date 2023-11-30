@@ -102,12 +102,13 @@ graph LR
     style D fill:#117711,stroke:#333,stroke-width:2px
     style E fill:#117711,stroke:#333,stroke-width:2px
 ```
-- Réduire l'étendu des tests par mutation selon le code modifié
+- Réduire l'étendu des tests par mutation selon les changements aux codes et aux tests
+- Limiter la portée analysée en filtrant le code non-pertinent à tester. Le code squelette (*boilerplate*) par exemple
 
 ##### Outil
-Pour ce faire, l'outil Stryker offre des options pour aider à réduire la charge de travail. Les options disponibles dépendent de la technologie utilisé, par exemple:
-- Incremental mode pour JavaScript
-- Since et Baseline pour C#
+Pour ce faire, l'outil [Stryker](https://stryker-mutator.io/) offre des options pour aider à réduire la charge de travail. Les options disponibles dépendent de la technologie utilisé, par exemple:
+- *Incremental mode* pour JavaScript
+- *Since* et *Baseline* pour C#
 
 ⚠ Certaines options sont expérimentales et sans garantis de l'exactitude du résultat.
 
@@ -117,7 +118,7 @@ Avant d'intégrer les tests par mutation, on doit avoir minimalement un processu
 
 Aussi, c'est un outil qui ne s'apprête pas bien pour des tests d'intégrations, de systèmes ou bout en bout. On obtient de meilleurs résultats quand appliqué sur des tests unitaires ou fonctionnels sur une librairie.
 
-# Ceci dit, il est recommandé de focuser les tests de mutation sur la logique d'affaire. Par exemple, pour un projet inspiré de l'architecture propre .([CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), les couches application et domaine seraient ciblées pour calculer le pointage de mutation.
+Ceci dit, il est recommandé de focuser les tests de mutation sur la logique d'affaire. Par exemple, pour un projet inspiré de l'architecture propre .([CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), les couches application et domaine seraient ciblées pour calculer le pointage de mutation.
 
 Une approche d'amélioration en continue est recommandée pour faciliter l'intégration de la pratique. Pour ceux qui travail en sprint par exemple, quelques points d'amélioration pourraient servir à extraire un premier rapport de test de mutation et d'en faire l'analyse. De la dette technique pourrait être identifiée. On évalue le pour et le contre de l'outil selon le contexte, pour confirmer ou non son utilisation. Une stratégie d'intégration en continue serait l'objectif des prochaines étapes advenant l'adaptation de l'outil pour le projet.
 
