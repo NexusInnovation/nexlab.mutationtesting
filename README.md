@@ -102,7 +102,7 @@ graph LR
     style D fill:#117711,stroke:#333,stroke-width:2px
     style E fill:#117711,stroke:#333,stroke-width:2px
 ```
-- Réduire l'étendu des tests par mutation selon le code modifié
+- Réduire la portée des tests par mutation selon les changements aux codes et aux tests
 
 ##### Outil
 Pour ce faire, l'outil Stryker offre des options pour aider à réduire la charge de travail. Les options disponibles dépendent de la technologie utilisé, par exemple:
