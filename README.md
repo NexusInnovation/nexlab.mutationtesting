@@ -80,8 +80,10 @@ Techniquement la mise en place de filtres pour identifier ceux-ci est possible m
 
 Idéalement les étapes en vert sont ajoutés dans le processus d'intégration en continue pour attraper des régressions tôt pendant le développement et agir rapidement. 
 
-Par contre, le temps d'exécution de ces étapes risque fort de causer un problème. Si c'est le cas, il est possible d'effectuer ceux-ci en parallèle:
-
+Par contre, le temps d'exécution de ces étapes risque fort de causer un problème. 
+Il est possible d'user de stratégies pour minimiser l'impacte. Par exemple: 
+- Exécuter une analyse complète des tests de mutation pendant la nuit
+- Exécuter les tests de mutation en parallèle
 ```mermaid
 %%{init: {'theme':'dark'}}%%
 graph LR
@@ -100,8 +102,15 @@ graph LR
     style D fill:#117711,stroke:#333,stroke-width:2px
     style E fill:#117711,stroke:#333,stroke-width:2px
 ```
+- Réduire l'étendu des tests par mutation selon les changements aux codes et aux tests
+- Limiter la portée analysée en filtrant le code non-pertinent à tester. Le code squelette (*boilerplate*) ou le code pour l'infrastructure par exemples.
 
-Cependant en pratique, l'intégration peut devenir un défi selon le processus de développement et la stratégie de branches en place.
+##### Outil
+Pour ce faire, l'outil [Stryker](https://stryker-mutator.io/) offre des options pour aider à réduire la charge de travail. Les options disponibles dépendent de la technologie utilisé, par exemple:
+- *Incremental mode* pour JavaScript
+- *Since* et *Baseline* pour C#
+
+⚠ Certaines options sont expérimentales et sans garantis de l'exactitude du résultat.
 
 ## Recommandations
 
@@ -109,11 +118,11 @@ Avant d'intégrer les tests par mutation, on doit avoir minimalement un processu
 
 Aussi, c'est un outil qui ne s'apprête pas bien pour des tests d'intégrations, de systèmes ou bout en bout. On obtient de meilleurs résultats quand appliqué sur des tests unitaires ou fonctionnels sur une librairie.
 
-Ceci dit, il est recommandé de focuser les tests de mutation sur la logique d'affaire. Par exemple, pour un projet inspiré de l'architecture propre ([CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), les couches application et domaine seraient ciblées pour calculer le pointage de mutation.
+Ceci dit, il est recommandé de focuser les tests de mutation sur la logique d'affaire. Par exemple, pour un projet inspiré de l'architecture propre .([CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), les couches application et domaine seraient ciblées pour calculer le pointage de mutation.
 
 Une approche d'amélioration en continue est recommandée pour faciliter l'intégration de la pratique. Pour ceux qui travail en sprint par exemple, quelques points d'amélioration pourraient servir à extraire un premier rapport de test de mutation et d'en faire l'analyse. De la dette technique pourrait être identifiée. On évalue le pour et le contre de l'outil selon le contexte, pour confirmer ou non son utilisation. Une stratégie d'intégration en continue serait l'objectif des prochaines étapes advenant l'adaptation de l'outil pour le projet.
 
-Si l'intégration en continue s'appui sur une porte de qualité qui exige une couverture de tests de 85% par exemple, l'ajout d'une sensibilité au pointage de mutation serait cohérent pour bonifier la robustesse. Un seuil similaire à celui de la couverture serait acceptable.
+Si l'intégration en continue s'appui sur une porte de qualité, l'ajout d'une sensibilité au pointage de mutation serait cohérent pour bonifier la robustesse. Un seuil similaire à celui de la couverture serait acceptable.
 
 Globalement, on doit éviter le piège de simplement transformer les développeurs en chasseurs de mutants pour atteindre un seuil de pointage de mutation imposé. L'outil doit être au service du développement afin d'améliorer la stabilité du produit. Les membres de l'équipe doivent en comprendre le fondement et s'en servir dans le bon contexte et adéquatement.
 
