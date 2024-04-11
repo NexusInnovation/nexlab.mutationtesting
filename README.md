@@ -2,20 +2,20 @@
 Exploration des tests par mutation
 
 ## Introduction
-*nexlab.mutationtesting* est un projet d'exploration initié par les développeurs(ses) chez [Nexus Innovations](https://nexusinno.com/) pour analyser la pratique, les outils afin de d'appliquer celle-ci dans un contexte favorable.
+*nexlab.mutationtesting* est un projet d'exploration initié par les développeurs et développeuses chez [Nexus Innovations](https://nexusinno.com/) pour analyser la pratique et les outils afin de les appliquer dans un contexte favorable.
 
 ### Qu'est-ce que les tests par mutation ?
 En développement logiciel, la gestion de la qualité se concentre souvent à coder des tests automatisés dont le rôle est de s'assurer du bon fonctionnement d'un comportement dans un processus d'intégration en continue.
 
 Pour mesurer la qualité, les tests automatisés permettent d'obtenir le % de tests réussis et aussi la couverture du code testé par les tests automatisés. Est-ce suffisant pour dire que l'application fonctionne vraiment ?
 
-La réponse est non. L'une des raisons est que **100% des tests réussis et 100% de couverture du code par les tests ne veut pas dire que le code est testés et vérifiés entièrement**. On parle ici de l'efficacité des tests à trouver des anomalies.
+La réponse est non. L'une des raisons est que **100% des tests réussis et 100% de couverture du code par les tests ne veut pas dire que le code est testé et vérifié entièrement**. On parle ici de l'efficacité des tests à trouver des anomalies.
 
-C'est ainsi que les tests par mutation permettent d'obtenir une métrique additionnelle afin d'ajouter de la stabilité en simulant des anomalies dans le code testé (des mutants) et relancer les tests pour vérifier que chaque anomalie a fait échoué un ou plusieurs tests (nombre de mutants tués).
+C'est ainsi que les tests par mutation permettent d'obtenir une métrique additionnelle afin d'ajouter de la stabilité en simulant des anomalies dans le code testé (des mutants) et relancer les tests pour vérifier que chaque anomalie a fait échouer un ou plusieurs tests (nombre de mutants tués).
 
 ## Comment l'appliquer ?
 
-Il existe plusieurs outils selon la technologie utilisés, cependant le processus se résume à ceci:
+Il existe plusieurs outils selon la technologie utilisée, cependant le processus se résume à ceci:
 
 ```mermaid
 %%{init: {'theme':'dark'}}%%
@@ -28,11 +28,11 @@ graph LR
     style C fill:#117711,stroke:#333,stroke-width:2px
     style D fill:#117711,stroke:#333,stroke-width:2px
 ```
-Notez bien que si des anomalies sont trouvés sans mutation, le processus s'arrête car les données du rapport de mutation seraient fausses.
+Notez bien que si des anomalies sont trouvées sans mutation, le processus s'arrête car les données du rapport de mutation seraient fausses.
 
-## En pratiques
+## En pratique
 
-Le context du projet à développer doit être favorable. En d'autres mots, la qualité doit être un attribut important pour la réussite du projet et soutenu par les intervenants.
+Le contexte du projet à développer doit être favorable. En d'autres mots, la qualité doit être un attribut important pour la réussite du projet et soutenu par les intervenants.
 
 La gestion de la qualité doit nécessairement passer par des tests automatisés afin d'appliquer des tests par mutation.
 
@@ -40,25 +40,25 @@ La gestion de la qualité doit nécessairement passer par des tests automatisés
 
 1. Offre un aperçu sur l'efficacité des tests à attraper des comportements indésirables
 1. Prévient des erreurs de régression lorsqu'on bonifie les tests afin d'attraper des mutants ayant survécus
-1. Réduit des allers-retours causés par des anomalies identifié lors de tests manuelles
+1. Réduit des allers-retours causés par des anomalies identifié lors de tests manuels
 1. Augmente la qualité des tests pour gagner en confiance sur la stabilité
 
 ### Inconvénients
 
-1. Coût d'exécution des tests par mutation ralentit l'intégration en continue
+1. Coût d'exécution des tests par mutation ralentit l'intégration en continu
 1. Effort accrue pour le développement des tests automatisés
 1. Ajout d'une responsabilité à analyser le rapport de tests par mutation
 1. L'efficacité des tests par mutation dépend des possibilités qu'offre l'outil de mutation et ne peut pas simuler tous les types de modification
 
 ### Défis et risques
 
-Adopter les tests par mutation ne doit pas être perçu comme une tâches en extra ou même exclus du développement d'une fonctionnalité. La culture de gestion de la qualité en pratique ne doit pas se restreindre à chasser des mutants et atteindre une couverture de test acceptable.
+Adopter les tests par mutation ne doit pas être perçu comme une tâche en extra ou même exclus du développement d'une fonctionnalité. La culture de gestion de la qualité en pratique ne doit pas se restreindre à chasser des mutants et atteindre une couverture de test acceptable.
 
 #### Attentes irréalistes
 
-Viser une couverture de tests de 100% et 0 survivants parmi les mutants sur l'entièreté du code est plutôt une utopie. Techniquement l'entièrement du code possèdent différent niveau de testabilité et de pertinence à être testé. 
+Viser une couverture de tests de 100% et 0 survivant parmi les mutants sur l'entièreté du code est plutôt une utopie. Techniquement l'entièrement du code possèdent différent niveau de testabilité et de pertinence à être testé. 
 
-Du code qu'on appel parfois de plomberie dont la pertinence d'effectuer des mutations serait remis en question. L'enregistrement de services pour l'injection des dépendances, la gestion de traitement asynchrone par exemple peut être du code mutable mais difficile à attraper ou possiblement non pertinent.
+Du code qu'on appelle parfois de plomberie dont la pertinence d'effectuer des mutations serait remis en question. L'enregistrement de services pour l'injection des dépendances, la gestion de traitement asynchrone par exemple peut être du code mutable mais difficile à attraper ou possiblement non pertinent.
 
 Ainsi, nous devons choisir le code qui est soumis aux tests par mutation.
 
@@ -68,7 +68,7 @@ Maintenant que la chasse aux mutants est commencée, le premier problème est qu
 
 Si on exige qu'aucun mutant doit survivre, les développeurs vont passer beaucoup de temps à les attraper et seront tentés de vouloir tricher la métrique pour respecter ce standard. Aussi, attraper tous les mutants va générer beaucoup de tests automatisés peu pertinents, abstraits dont la maintenance sera coûteuse et souffrante. 
 
-C'est pourquoi l'équipe de développement se doit d'évaluer les mutations selon leurs contexte.
+C'est pourquoi l'équipe de développement se doit d'évaluer les mutations selon leur contexte.
 
 #### Attraper les plus importants
 
@@ -78,10 +78,10 @@ Techniquement la mise en place de filtres pour identifier ceux-ci est possible m
 
 #### Intégration en continue difficile
 
-Idéalement les étapes en vert sont ajoutés dans le processus d'intégration en continue pour attraper des régressions tôt pendant le développement et agir rapidement. 
+Idéalement les étapes en vert sont ajoutées dans le processus d'intégration en continu pour attraper des régressions tôt pendant le développement et agir rapidement. 
 
 Par contre, le temps d'exécution de ces étapes risque fort de causer un problème. 
-Il est possible d'user de stratégies pour minimiser l'impacte. Par exemple: 
+Il est possible d'user de stratégies pour minimiser l'impact. Par exemple: 
 - Exécuter une analyse complète des tests de mutation pendant la nuit
 - Exécuter les tests de mutation en parallèle
 ```mermaid
@@ -102,15 +102,15 @@ graph LR
     style D fill:#117711,stroke:#333,stroke-width:2px
     style E fill:#117711,stroke:#333,stroke-width:2px
 ```
-- Réduire l'étendu des tests par mutation selon les changements aux codes et aux tests
+- Réduire l'étendue des tests par mutation selon les changements aux codes et aux tests
 - Limiter la portée analysée en filtrant le code non-pertinent à tester. Le code squelette (*boilerplate*) ou le code pour l'infrastructure par exemples.
 
 ##### Outil
-Pour ce faire, l'outil [Stryker](https://stryker-mutator.io/) offre des options pour aider à réduire la charge de travail. Les options disponibles dépendent de la technologie utilisé, par exemple:
+Pour ce faire, l'outil [Stryker](https://stryker-mutator.io/) offre des options pour aider à réduire la charge de travail. Les options disponibles dépendent de la technologie utilisée, par exemple:
 - *Incremental mode* pour JavaScript
 - *Since* et *Baseline* pour C#
 
-⚠ Certaines options sont expérimentales et sans garantis de l'exactitude du résultat.
+⚠ Certaines options sont expérimentales et sans garantie de l'exactitude du résultat.
 
 ## Recommandations
 
@@ -118,11 +118,11 @@ Avant d'intégrer les tests par mutation, on doit avoir minimalement un processu
 
 Aussi, c'est un outil qui ne s'apprête pas bien pour des tests d'intégrations, de systèmes ou bout en bout. On obtient de meilleurs résultats quand appliqué sur des tests unitaires ou fonctionnels sur une librairie.
 
-Ceci dit, il est recommandé de focuser les tests de mutation sur la logique d'affaire. Par exemple, pour un projet inspiré de l'architecture propre ([CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), les couches application et domaine seraient ciblées pour calculer le pointage de mutation.
+Ceci dit, il est recommandé de focusser les tests de mutation sur la logique d'affaire. Par exemple, pour un projet inspiré de l'architecture propre ([CleanArchitecture de Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)), les couches application et domaine seraient ciblées pour calculer le pointage de mutation.
 
-Une approche d'amélioration en continue est recommandée pour faciliter l'intégration de la pratique. Pour ceux qui travail en sprint par exemple, quelques points d'amélioration pourraient servir à extraire un premier rapport de test de mutation et d'en faire l'analyse. De la dette technique pourrait être identifiée. On évalue le pour et le contre de l'outil selon le contexte, pour confirmer ou non son utilisation. Une stratégie d'intégration en continue serait l'objectif des prochaines étapes advenant l'adaptation de l'outil pour le projet.
+Une approche d'amélioration en continu est recommandée pour faciliter l'intégration de la pratique. Pour ceux qui travaillent en sprint par exemple, quelques points d'amélioration pourraient servir à extraire un premier rapport de test de mutation et d'en faire l'analyse. De la dette technique pourrait être identifiée. On évalue le pour et le contre de l'outil selon le contexte, pour confirmer ou non son utilisation. Une stratégie d'intégration en continue serait l'objectif des prochaines étapes advenant l'adaptation de l'outil pour le projet.
 
-Si l'intégration en continue s'appui sur une porte de qualité, l'ajout d'une sensibilité au pointage de mutation serait cohérent pour bonifier la robustesse. Un seuil similaire à celui de la couverture serait acceptable.
+Si l'intégration en continue s'appuie sur une porte de qualité, l'ajout d'une sensibilité au pointage de mutation serait cohérent pour bonifier la robustesse. Un seuil similaire à celui de la couverture serait acceptable.
 
 Globalement, on doit éviter le piège de simplement transformer les développeurs en chasseurs de mutants pour atteindre un seuil de pointage de mutation imposé. L'outil doit être au service du développement afin d'améliorer la stabilité du produit. Les membres de l'équipe doivent en comprendre le fondement et s'en servir dans le bon contexte et adéquatement.
 
